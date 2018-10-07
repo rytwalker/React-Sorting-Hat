@@ -2,16 +2,24 @@ import React from 'react';
 import NextButton from './NextButton';
 import './Question.css';
 
-const Question = props => {
+const Question = ({
+  id,
+  classStyles,
+  link,
+  question,
+  options,
+  handleSelectingAnswer
+}) => {
   return (
-    <div id={props.id} className={props.question}>
+    <div id={id} className={classStyles} onClick={handleSelectingAnswer}>
       <div className="Question-Container">
-        <h3 className="Question-Text">Pick an ideal vacation destionation:</h3>
-        <div className="Option">The Beach</div>
-        <div className="Option">Paris</div>
-        <div className="Option">The Rodeo</div>
-        <div className="Option">Snow</div>
-        <NextButton link={props.link} />
+        <h3 className="Question-Text">{question}</h3>
+        {options.map(option => (
+          <div className="Option" key={option.house} data-house={option.house}>
+            {option.option}
+          </div>
+        ))}
+        <NextButton link={link} />
       </div>
     </div>
   );
