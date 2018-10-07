@@ -1,0 +1,116 @@
+.Question {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  color: #fff;
+  align-items: center;
+}
+
+.Question-Container {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Question-Text {
+  width: 100%;
+  font-size: 3.6rem;
+  margin-bottom: 3rem;
+}
+
+.Option {
+  width: 48%;
+  font-size: 3rem;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  margin-bottom: 4%;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.NextButton {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 4rem;
+  color: #fff;
+}
+
+.one {
+  background: #d89c00;
+}
+
+.one .Option {
+  background: #b48304;
+}
+
+.one .Option:hover {
+  background: #ffbd12;
+}
+
+.two {
+  background: #071a19;
+}
+
+.two .Option {
+  background: #0a302f;
+}
+
+.two .Option:hover {
+  background: #247c79;
+}
+
+.three {
+  background: #630b1c;
+}
+
+.three .Option {
+  background: #761d2e;
+}
+
+.three .Option:hover {
+  background: #932c40;
+  /* border: 5px solid #761d2e; */
+}
+
+.four {
+  background: #443943;
+}
+
+.four .Option {
+  background: #211c21;
+}
+
+.four .Option:hover {
+  background: #6d626c;
+}
+
+.five {
+  background: #525869;
+}
+
+.five .Option {
+  background: #282b34;
+}
+
+.five .Option:hover {
+  background: #7a8194;
+}
+
+.six {
+  background: #d2d2d2;
+}
+
+.six .Option {
+  background: #333;
+}
+
+.six .Option:hover {
+  background: #eee;
+  color: #333;
+}
