@@ -3,6 +3,7 @@ import Question from './components/Question';
 import data from './data';
 import results from './results';
 import './App.css';
+import Results from './components/Results';
 
 class App extends Component {
   constructor() {
@@ -10,7 +11,9 @@ class App extends Component {
     this.state = {
       data,
       results,
-      answers: [null, null, null, null, null, null]
+      answers: [null, null, null, null, null, null],
+      showResults: false,
+      selectedHouse: 0
     };
   }
 
@@ -26,6 +29,7 @@ class App extends Component {
 
   handleTie = () => {
     const randomNum = Math.floor(Math.random() * 4);
+    this.setState({ selectedHouse: randomNum });
     return this.state.results[randomNum].house;
   };
 
@@ -34,21 +38,25 @@ class App extends Component {
       houseA >= 4 ||
       (houseA > houseB && houseA > houseC && houseA > houseD)
     ) {
+      this.setState({ selectedHouse: 0 });
       return this.state.results[0].house;
     } else if (
       houseB >= 4 ||
       (houseB > houseA && houseB > houseC && houseB > houseD)
     ) {
+      this.setState({ selectedHouse: 1 });
       return this.state.results[1].house;
     } else if (
       houseC >= 4 ||
       (houseC > houseA && houseC > houseB && houseC > houseD)
     ) {
+      this.setState({ selectedHouse: 2 });
       return this.state.results[2].house;
     } else if (
       houseD >= 4 ||
       (houseD > houseA && houseD > houseB && houseD > houseC)
     ) {
+      this.setState({ selectedHouse: 3 });
       return this.state.results[3].house;
     } else {
       return this.handleTie();
@@ -75,15 +83,16 @@ class App extends Component {
         slytherin += 1;
       }
     });
-    // Calculate results!
 
+    // Calculate results!
     house = this.handleWin(hufflepuff, gryffindor, ravenclaw, slytherin);
 
-    console.log(house);
+    // Show results
+    this.setState({ showResults: true });
   };
 
   render() {
-    const { data } = this.state;
+    const { data, showResults, results, selectedHouse } = this.state;
     return (
       <div className="App">
         <div id="welcome" className="Welcome">
@@ -106,10 +115,12 @@ class App extends Component {
         })}
 
         {/* RESULTS */}
-        <div id="results" className="Results">
-          <button onClick={this.handleSelectedHouse}>Results</button>
-          Results <a href="#welcome">Back to top</a>
-        </div>
+        <Results
+          handleSelectedHouse={this.handleSelectedHouse}
+          showResults={showResults}
+          results={results}
+          selectedHouse={selectedHouse}
+        />
       </div>
     );
   }

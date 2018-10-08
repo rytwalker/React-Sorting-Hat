@@ -1,0 +1,43 @@
+.Results-Container {
+  display: flex;
+  width: 60%;
+  flex-wrap: wrap;
+  margin: 0 auto 5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left,
+.right {
+  width: 48%;
+}
+
+.left {
+  background: #ccc;
+}
+
+.right h3 {
+  font-size: 4rem;
+}
+
+.right {
+  /* background: #7f0909; */
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  /* color: #ffc500; */
+}
+
+.Results-Btn {
+  background: #333;
+  padding: 1rem 1.5rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.top {
+  /* margin-top: 20rem; */
+  color: #fff;
+}
