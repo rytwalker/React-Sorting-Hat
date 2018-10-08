@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Question from './components/Question';
 import data from './data';
+import results from './results';
 import './App.css';
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
     super();
     this.state = {
       data,
+      results,
       answers: [null, null, null, null, null, null]
     };
   }
@@ -22,51 +24,60 @@ class App extends Component {
     }
   };
 
+  handleTie = () => {
+    const randomNum = Math.floor(Math.random() * 4);
+    return this.state.results[randomNum].house;
+  };
+
+  handleWin = (houseA, houseB, houseC, houseD) => {
+    if (
+      houseA >= 4 ||
+      (houseA > houseB && houseA > houseC && houseA > houseD)
+    ) {
+      return this.state.results[0].house;
+    } else if (
+      houseB >= 4 ||
+      (houseB > houseA && houseB > houseC && houseB > houseD)
+    ) {
+      return this.state.results[1].house;
+    } else if (
+      houseC >= 4 ||
+      (houseC > houseA && houseC > houseB && houseC > houseD)
+    ) {
+      return this.state.results[2].house;
+    } else if (
+      houseD >= 4 ||
+      (houseD > houseA && houseD > houseB && houseD > houseC)
+    ) {
+      return this.state.results[3].house;
+    } else {
+      return this.handleTie();
+    }
+  };
+
   handleSelectedHouse = () => {
     const answers = [...this.state.answers];
-    const hufflepuff = [];
-    const gryffindor = [];
-    const ravenclaw = [];
-    const slytherin = [];
+    let hufflepuff = 0;
+    let gryffindor = 0;
+    let ravenclaw = 0;
+    let slytherin = 0;
     let house;
+
     // Sort answers
     answers.forEach(answer => {
       if (answer === 'H') {
-        hufflepuff.push(answer);
+        hufflepuff += 1;
       } else if (answer === 'G') {
-        gryffindor.push(answer);
+        gryffindor += 1;
       } else if (answer === 'R') {
-        ravenclaw.push(answer);
+        ravenclaw += 1;
       } else if (answer === 'S') {
-        slytherin.push(answer);
+        slytherin += 1;
       }
     });
+    // Calculate results!
 
-    if (
-      hufflepuff.length > gryffindor.length &&
-      hufflepuff.length > ravenclaw.length &&
-      hufflepuff.length > slytherin.length
-    ) {
-      house = 'Hufflepuff';
-    } else if (
-      gryffindor.length > hufflepuff.length &&
-      gryffindor.length > ravenclaw.length &&
-      hufflepuff.length > slytherin.length
-    ) {
-      house = 'Gryffindor';
-    } else if (
-      ravenclaw.length > hufflepuff.length &&
-      ravenclaw.length > gryffindor.length &&
-      ravenclaw.length > slytherin.length
-    ) {
-      house = 'Ravenclaw';
-    } else if (
-      slytherin.length > hufflepuff.length &&
-      slytherin.length > gryffindor.length &&
-      slytherin.length > hufflepuff.length
-    ) {
-      house = 'Slytherin';
-    }
+    house = this.handleWin(hufflepuff, gryffindor, ravenclaw, slytherin);
 
     console.log(house);
   };
