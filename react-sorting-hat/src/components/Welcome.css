@@ -1,0 +1,43 @@
+.Welcome-Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Welcome .left {
+  background: none;
+  width: 65%;
+}
+
+.Welcome .left h1 {
+  display: flex;
+  flex-direction: column;
+  font-size: 5rem;
+}
+
+.Welcome .left span {
+  font-size: 3.2rem;
+}
+
+.Welcome .right {
+  width: 35%;
+}
+
+.Start-Btn {
+  background: #55719c;
+  padding: 1.5rem 8rem;
+  color: #fff;
+  font-size: 3.2rem;
+  border-radius: 5px;
+  margin: 5rem auto 0;
+  text-decoration: none;
+  transition: all 200ms;
+}
+
+.Start-Btn:hover {
+  background: #748bad;
+}

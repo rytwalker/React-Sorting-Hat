@@ -4,6 +4,7 @@ import data from './data';
 import results from './results';
 import './App.css';
 import Results from './components/Results';
+import Welcome from './components/Welcome';
 
 class App extends Component {
   constructor() {
@@ -95,9 +96,7 @@ class App extends Component {
     const { data, showResults, results, selectedHouse } = this.state;
     return (
       <div className="App">
-        <div id="welcome" className="Welcome">
-          Welcome <a href="#Q1">Next</a>
-        </div>
+        <Welcome />
 
         {/* QUESTIONS */}
         {data.map(question => {
